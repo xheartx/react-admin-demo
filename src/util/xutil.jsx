@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-04 14:20:10
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-04 16:41:38
+ * @Last Modified time: 2018-06-05 13:30:39
  * @description: 工具
  */
 
@@ -42,6 +42,10 @@ class XUtil{
           result = queryString.match(reg)
       return result ? decodeURIComponent(result[2]) : null
 
+    }
+    // 成功提示
+    successTips(successMsg) {
+      alert(successMsg || '操作成功!')
     }
     // 错误提示
     errorTips(errMsg) {

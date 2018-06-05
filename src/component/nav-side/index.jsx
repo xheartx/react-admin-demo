@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-04 10:21:14
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-04 17:33:31
+ * @Last Modified time: 2018-06-05 11:12:26
  * @description: 侧边栏导航
  */
 import React, { Component } from 'react'
@@ -31,10 +31,10 @@ class NavSide extends Component {
               </Link>
               <ul className="nav nav-second-level collapse in">
                 <li>
-                  <NavLink to="/pruduct" activeClassName="active-menu">商品管理</NavLink>
+                  <NavLink to="/product" activeClassName="active-menu">商品管理</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/pruduct-category" activeClassName="active-menu">品类管理</NavLink>
+                  <NavLink to="/product-category" activeClassName="active-menu">品类管理</NavLink>
                 </li>
               </ul>
             </li>
