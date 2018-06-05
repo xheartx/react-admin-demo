@@ -48,7 +48,15 @@ class User {
         type: 'post',
         url: '/user/logout.do'
       })
-      
+    }
+    getUserList(pageNum) {
+      return _util.request({
+        type: 'post',
+        url: '/manage/user/list.do',
+        data: {
+          pageNum
+        }
+      })
     }
 }
 
