@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-05 10:52:57
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-05 16:03:34
+ * @Last Modified time: 2018-06-06 11:53:25
  * @description: 产品管理
  */
 
@@ -14,6 +14,8 @@ import PageTitle from 'component/page-title/index.jsx';
 import CategorySelector from './category-selector.jsx';
 import FileUploader from 'util/file-uploader/index.jsx';
 
+import './save.scss'
+
 const _util = new XUtil();
 const _product = new Product();
 
@@ -23,13 +25,36 @@ class ProductSave extends Component {
     super(props)
     this.state = {
       categoryId: 0,
-      parentCategoryId: 0
+      parentCategoryId: 0,
+      subImages: []
     }
   }
+  // 品类选择器的变化
   onCategoryChange(categoryId, parentCategoryId) {
     this.setState({
       categoryId,
       parentCategoryId
+    })
+  }
+  // 上传图片成功
+  onUploadSuccess(res) {
+    let subImages = this.state.subImages;
+    subImages.push(res);
+    this.setState({
+      subImages
+    })
+  }
+  // 上传图片失败
+  onUploadError(errMsg) {
+    _util.errorTips(errMsg)
+  }
+  // 删除图片
+  onImageDelete(e) {
+    let index = parseInt(e.target.getAttribute('index')),
+        subImages = this.state.subImages;
+    subImages.splice(index, 1);
+    this.setState({
+      subImages
     })
   }
   render() {
@@ -73,8 +98,19 @@ class ProductSave extends Component {
           </div>
           <div className="form-group">
             <label className="col-md-2 control-label">商品图片</label>
-            <div className="col-md-10">
-              <FileUploader />
+            <div className="col-md-10 file-upload-images">
+            {
+              this.state.subImages.length ? this.state.subImages.map((image, index) => (
+                <div className="img-con" key={image.uri}>
+                  <img src={image.url} alt=""/>
+                  <i className="fa fa-close" index={index} onClick={this.onImageDelete.bind(this)}></i>
+                </div>
+              )) : (<div>请上传图片</div>)
+            }
+            </div>
+            <div className="col-md-10 col-md-offset-2 file-upload-con">
+              <FileUploader onSuccess={this.onUploadSuccess.bind(this)}
+                            onError={this.onUploadError.bind(this)} />
             </div>
           </div>
           <div className="form-group">
