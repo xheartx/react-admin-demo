@@ -1,10 +1,10 @@
 .img-con{
+  position: relative;
   width: 100px;
   height: 100px;
   float: left;
   margin-right: 10px;
   border: 1px solid #ccc;
-  position: relative;
   &::before{
     content: '';
     display: inline-block;/*将行内元素改变为行内块元素显示*/ 
@@ -43,4 +43,11 @@
 }
 .file-upload-con{
   margin-top: 15px;
+}
+.product-detail{
+  overflow: auto;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
 }

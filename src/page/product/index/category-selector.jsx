@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-05 15:09:13
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-05 15:47:10
+ * @Last Modified time: 2018-06-07 13:43:28
  * @description: 品类选择器
  */
 
@@ -27,6 +27,30 @@ class CategorySelector extends Component {
   componentDidMount() {
     this.loadFirstCategory()
   }
+  componentWillReceiveProps(nextProps) {
+    let categoryIdChange = this.props.categoryId !== nextProps.categoryId,
+        parentcategoryIdChange = this.props.parentCategoryId !== nextProps.parentCategoryId;
+    // 数据没有发生变化的时候， 不做处理
+    if (!categoryIdChange && !parentcategoryIdChange) {
+      return
+    }
+    // 假如只有一级品类
+    if (nextProps.parentCategoryId === 0) {
+      this.setState({
+        firstCategoryId: nextProps.categoryId,
+        secondCategoryId: 0,
+      })
+    }
+    // 假如有两及品类
+    else {
+      this.setState({
+        firstCategoryId: nextProps.parentCategoryId,
+        secondCategoryId: nextProps.categoryId
+      }, () => {
+        parentcategoryIdChange && this.loadSecondCategory()
+      })
+    }
+  }
   // 加载一级分类
   loadFirstCategory() {
     _product.getCategoryList().then(res => {
@@ -49,6 +73,9 @@ class CategorySelector extends Component {
   }
   // 选择一级品类
   onFirstCategoryChange(e) {
+    if (this.props.readOnly) {
+      return 
+    }
     let newValue = e.target.value || 0;
     this.setState({
       firstCategoryId: newValue,
@@ -60,6 +87,9 @@ class CategorySelector extends Component {
     })
   }
   onSecondCategoryChange(e) {
+    if (this.props.readOnly) {
+      return 
+    }
     let newValue = e.target.value || 0;
     this.setState({
       secondCategoryId: newValue,
@@ -83,6 +113,8 @@ class CategorySelector extends Component {
     return (
       <div className="col-md-10">
         <select className="form-control cate-select"
+                readOnly={this.props.readOnly}
+                value={this.state.firstCategoryId}
                 onChange={this.onFirstCategoryChange.bind(this)}>
           <option value="">请选择一级分类</option>
           {
@@ -94,6 +126,8 @@ class CategorySelector extends Component {
         {
           this.state.secondCategoryList.length > 0 ? 
           (<select className="form-control cate-select"
+                   readOnly={this.props.readOnly}
+                   value={this.state.secondCategoryId}
                    onChange={this.onSecondCategoryChange.bind(this)}>
             <option value="">请选择二级分类</option>
             {
