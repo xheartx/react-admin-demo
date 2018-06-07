@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-01 16:52:58
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-05 11:10:56
+ * @Last Modified time: 2018-06-07 14:07:27
  * @description: App
  */
 
@@ -26,7 +26,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/product" component={ProductRouter} />
-            <Route path="/product-category" component={Home} />
+            <Route path="/product-category" component={ProductRouter} />
             <Route path="/user/index" component={UserList} />
             <Redirect exact from="/user" to="/user/index" />
             <Route path="/order" component={Home} />

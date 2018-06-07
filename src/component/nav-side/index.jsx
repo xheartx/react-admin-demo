@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-04 10:21:14
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-05 11:12:26
+ * @Last Modified time: 2018-06-07 13:52:13
  * @description: 侧边栏导航
  */
 import React, { Component } from 'react'
@@ -24,7 +24,7 @@ class NavSide extends Component {
               </NavLink>
             </li>
             <li className="active">
-              <Link to="/pruduct">
+              <Link to="/product">
                 <i className="fa fa-list"></i> 
                 <span>商品</span>
                 <span className="fa arrow"></span>

@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-05 10:52:57
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-05 14:35:06
+ * @Last Modified time: 2018-06-07 14:53:31
  * @description: 产品管理
  */
 
@@ -104,7 +104,7 @@ class ProductList extends Component {
           <div className="page-header-right">
             <Link className="btn btn-primary" to="/product/save">
               <i className="fa fa-plus"></i>
-              <span>添加商品</span>
+              <span> 添加商品</span>
             </Link>
           </div>
         </PageTitle>

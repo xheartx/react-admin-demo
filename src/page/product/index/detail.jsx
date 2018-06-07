@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-05 10:52:57
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-07 13:47:02
+ * @Last Modified time: 2018-06-07 14:01:49
  * @description: 产品管理
  */
 
@@ -59,7 +59,7 @@ class ProductDetail extends Component {
   render() {
     return (
       <div id="page-wrapper">
-        <PageTitle title="添加商品" />
+        <PageTitle title={this.state.id ? "编辑商品" : "添加商品"} />
         <div className="form-horizontal">
           <div className="form-group">
             <label className="col-md-2 control-label">商品名称</label>

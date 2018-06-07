@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-04 15:40:26
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-07 10:37:33
+ * @Last Modified time: 2018-06-07 14:52:08
  * @description: 产品服务
  */
 
@@ -103,6 +103,7 @@ class Product {
     /*
     * 品类相关
     */
+   // 根据ID 获取品类列表
    getCategoryList(parentCategoryId) {
       return _util.request({
         type: 'post',
@@ -111,6 +112,22 @@ class Product {
           categoryId: parentCategoryId || 0
         }
       })
+   }
+   // 新增品类
+   saveCategory(category) {
+    return _util.request({
+      type: 'post',
+      url: '/manage/category/add_category.do',
+      data: category
+    })
+   }
+   // 修改品类
+   updateCategoryName(category) {
+    return _util.request({
+      type: 'post',
+      url: '/manage/category/set_category_name.do',
+      data: category
+    })
    }
 }
 
