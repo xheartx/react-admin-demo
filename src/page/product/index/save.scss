@@ -1,0 +1,53 @@
+.img-con{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  &::before{
+    content: '';
+    display: inline-block;/*将行内元素改变为行内块元素显示*/ 
+    width: 1px;/*实现ＩＥ下可读效果*/ 
+    height: 100%;/*使用元素高度和图片容器高度一样*/ 
+    vertical-align: middle;/*垂直对齐*/
+    margin-left: -1px;
+  }
+  & > img{
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+  & > .fa-close{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    display: none;
+    font-size: 50px;
+    color: #aaa;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    background: rgba(0,0,0,0.1);
+  }
+  &:hover .fa-close{
+    display: block;
+  }
+}
+.file-upload-images{
+  margin-top: 10px;
+  overflow: hidden;
+}
+.file-upload-con{
+  margin-top: 15px;
+}
+.product-detail{
+  overflow: auto;
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+}
