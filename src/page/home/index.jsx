@@ -2,7 +2,7 @@
  * @Author: X.Heart
  * @Date: 2018-06-04 10:21:14
  * @Last Modified by: X.Heart
- * @Last Modified time: 2018-06-04 17:21:57
+ * @Last Modified time: 2018-06-07 14:56:39
  * @description: Home
  */
 import React, { Component }from 'react'
@@ -30,7 +30,6 @@ class Home extends Component {
   }
   loadCount() {
     _statistic.getHomeCount().then(res => {
-      console.log(res)
       this.setState(res)
     }, errMsg => {
       _util.errorTips(errMsg)
