@@ -1,4 +1,4 @@
-# react-admin react-admin-demo
+# react-admin-demo
 用 react 开发的 简单后台 DEMO
 
 ![](http://ww1.sinaimg.cn/large/006ohsoygy1ftwmfnppb3j31520pqab5.jpg)
